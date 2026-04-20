@@ -18,3 +18,8 @@ nav{
     bacground:#333;
     padding:10px;
 }
+nav ul{
+    display:flex;
+    justify-content:center;
+    list-style:none;
+}
