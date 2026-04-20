@@ -23,3 +23,6 @@ nav ul{
     justify-content:center;
     list-style:none;
 }
+nav ul{
+    margin:0 15px;
+}
