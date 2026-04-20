@@ -10,4 +10,7 @@ body{
 }
 header{
     background:#4ca599;
+    color :white;
+    pading:20px;
+    text-align:center;
 }
