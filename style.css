@@ -86,3 +86,14 @@ border-radius:5px;
 cursor:pointer;
 font-size:16px;
 }
+button:hover{
+background:#357abd;
+}
+
+footer{
+background:#333;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:20px;
+}
