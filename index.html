@@ -1,88 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Website</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Website</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1 align="center">Ayan Sayyed</h1>
-    <header>
-        <h1 align="center">Interactive Quiz Application</h1>
-        <p>Test Your Knowledge</p>
-    </header>
+
+<header>
+<h1>Interactive Quiz Application</h1>
+<p>Test Your Knowledge</p>
+</header>
+
 <nav>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#quizzes">Quizzes</a></li>
-        <li><a href="#score">Score</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Quiz</a></li>
+<li><a href="#">Score</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
 </nav>
+
 <main>
-    <section>
-        <header>
-            <article>
-                <h3>Progress</h3>
-                <progress value="1" max="5">70%</progress>
-                <h3>Timer</h3>
-                <p>Time remaining : 15 seconds</p>
-                <h2>Question 1</h2>
-                <p>Which language is used for web development?</p>
-            <form>
-                <fieldset>
-                    <legend>Choose the correct answer:</legend>
-                    <input type="radio" id="html" name="answer" value="HTML">
-                    <label for="html">HTML</label><br>
-                    <input type="radio" id="css" name="answer" value="CSS">
-                    <label for="css">CSS</label><br>
-                    <input type="radio" id="javascript" name="answer" value="JavaScript">
-                    <label for="javascript">JavaScript</label><br>
-                </fieldset>
-                <br>
-                <article>
 
-<h3>Question 2</h3>
-<progress value="2" max="5"></progress>
+<section class="quiz-box">
 
-<p>Which tag is used to create a hyperlink?</p>
+<h2 id="question"></h2>
 
-<fieldset>
-<legend>Select Answer</legend>
+<progress id="progressBar" value="1" max="5"></progress>
 
-<input type="radio" name="q2"> &lt;img&gt; <br>
-<input type="radio" name="q2"> &lt;a&gt; <br>
-<input type="radio" name="q2"> &lt;link&gt; <br>
-<input type="radio" name="q2"> &lt;href&gt;
+<p id="timer">Time Left: 15 sec</p>
 
-</fieldset>
+<div class="options">
+<label><input type="radio" name="answer" value="0">
+<span id="opt0"></span></label>
 
-</article>
+<label><input type="radio" name="answer" value="1">
+<span id="opt1"></span></label>
 
-<br>
-                <button type="submit" value="Submit">
-                    Submit Answer
-                </button>
-            </form>
-            <section>
-                <h3>Feedback</h3>
-                <p>Correct answer: HTML</p>
-            </section>
-            </article>
-        
-    </section>
-    <aside>
-        <h3>Quiz instructions</h3>
-        <ul>
-            <li>select one answer</li>
-            <li>Complete within time</li>
-            <li>Submit your answer</li>
-        </ul>
-    </aside>
+<label><input type="radio" name="answer" value="2">
+<span id="opt2"></span></label>
+
+<label><input type="radio" name="answer" value="3">
+<span id="opt3"></span></label>
+</div>
+
+<button onclick="nextQuestion()">
+Submit Answer
+</button>
+
+</section>
+
+<aside>
+<h3>Instructions</h3>
+<ul>
+<li>Select one answer</li>
+<li>Complete in time</li>
+<li>Submit each answer</li>
+</ul>
+</aside>
+
 </main>
+
 <footer>
-    <p>&copy; 2024 Quiz Website. All rights reserved.</p>
+<p>© 2024 Quiz Website</p>
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>
