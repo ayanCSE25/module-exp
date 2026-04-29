@@ -79,3 +79,17 @@ nextQuestion();
 },1000);
 
 }
+function nextQuestion(){
+
+clearInterval(timer);
+
+let selected=document.querySelector(
+'input[name="answer"]:checked'
+);
+
+if(selected && 
+parseInt(selected.value)===quiz[current].answer){
+score++;
+}
+
+current++;
