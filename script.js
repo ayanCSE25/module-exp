@@ -59,4 +59,23 @@ document.querySelectorAll('input[name="answer"]')
 .forEach(r=>r.checked=false);
 
 startTimer();
+}function startTimer(){
+
+clearInterval(timer);
+time=15;
+
+timer=setInterval(function(){
+
+document.getElementById("timer").innerHTML=
+"Time Left: "+time+" sec";
+
+time--;
+
+if(time<0){
+clearInterval(timer);
+nextQuestion();
+}
+
+},1000);
+
 }
