@@ -45,3 +45,12 @@ let current=0;
 let score=0;
 let time=15;
 let timer;
+function loadQuestion(){
+
+document.getElementById("question").innerHTML=
+quiz[current].question;
+
+for(let i=0;i<4;i++){
+document.getElementById("opt"+i).innerHTML=
+quiz[current].options[i];
+}
