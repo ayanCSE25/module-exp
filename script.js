@@ -93,3 +93,15 @@ score++;
 }
 
 current++;
+if(current<quiz.length){
+loadQuestion();
+}
+else{
+document.querySelector(".quiz-box").innerHTML=
+"<h1>Quiz Completed</h1>"+
+"<h2>Your Score: "+score+"/"+quiz.length+"</h2>";
+}
+
+}
+
+loadQuestion();
