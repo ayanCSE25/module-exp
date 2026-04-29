@@ -53,4 +53,10 @@ quiz[current].question;
 for(let i=0;i<4;i++){
 document.getElementById("opt"+i).innerHTML=
 quiz[current].options[i];
+}document.getElementById("progressBar").value=current+1;
+
+document.querySelectorAll('input[name="answer"]')
+.forEach(r=>r.checked=false);
+
+startTimer();
 }
