@@ -63,8 +63,8 @@ const quizzes = {
       question:"Which tag is used for paragraph?",
 
       options:[
-        "<p>",
         "<h1>",
+        "<p>",
         "<div>",
         "<br>"
       ],
