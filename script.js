@@ -1,107 +1,527 @@
-const quiz = [
-{
-question:"Which language is used for web development?",
-options:["HTML","Python","C","Java"],
-answer:0
-},
-{
-question:"Which tag creates a hyperlink?",
-options:["img","a","link","href"],
-answer:1
-},
-{
-question:"CSS stands for?",
-options:[
-"Creative Style Sheets",
-"Cascading Style Sheets",
-"Colorful Style Sheets",
-"Computer Style Sheets"
-],
-answer:1
-},
-{
-question:"JavaScript is used for?",
-options:[
-"Styling",
-"Database",
-"Interactivity",
-"Hardware"
-],
-answer:2
-},
-{
-question:"Which is frontend language?",
-options:[
-"HTML",
-"SQL",
-"Python",
-"PHP"
-],
-answer:0
-}
-];
+// SHOW HOME PAGE FIRST
 
-let current=0;
-let score=0;
-let time=15;
+document.getElementById(
+"home").style.display = "flex";
+
+// PAGE SWITCHING
+
+function showPage(pageId){
+
+  // SELECT ALL PAGES
+
+  const pages =
+  document.querySelectorAll(".page");
+
+  // HIDE ALL PAGES
+
+  pages.forEach(page => {
+
+    page.style.display = "none";
+
+  });
+
+  // SHOW SELECTED PAGE
+
+  if(pageId === "home" ||
+     pageId === "contact" ||
+     pageId === "feedbackPage"){
+
+    document.getElementById(pageId)
+    .style.display = "flex";
+
+  }
+
+  else{
+
+    document.getElementById(pageId)
+    .style.display = "block";
+
+  }
+
+}
+
+// QUIZ DATA
+
+const quizzes = {
+
+  html: [
+
+    {
+      question:"HTML stands for?",
+
+      options:[
+        "Hyper Text Markup Language",
+        "High Text Machine Language",
+        "Hyperlinks Text Mark Language",
+        "Home Tool Markup Language"
+      ],
+
+      answer:"Hyper Text Markup Language"
+    },
+
+    {
+      question:"Which tag is used for paragraph?",
+
+      options:[
+        "<p>",
+        "<h1>",
+        "<div>",
+        "<br>"
+      ],
+
+      answer:"<p>"
+    },
+
+    {
+      question:"Which tag is used for image?",
+
+      options:[
+        "<img>",
+        "<image>",
+        "<pic>",
+        "<src>"
+      ],
+
+      answer:"<img>"
+    },
+
+    {
+      question:"HTML file extension is?",
+
+      options:[
+        ".html",
+        ".ht",
+        ".hml",
+        ".php"
+      ],
+
+      answer:".html"
+    },
+
+    {
+      question:"Which tag creates line break?",
+
+      options:[
+        "<br>",
+        "<break>",
+        "<lb>",
+        "<hr>"
+      ],
+
+      answer:"<br>"
+    }
+
+  ],
+
+  css: [
+
+    {
+      question:"CSS is used for?",
+
+      options:[
+        "Styling",
+        "Database",
+        "Server",
+        "Programming"
+      ],
+
+      answer:"Styling"
+    },
+
+    {
+      question:"CSS stands for?",
+
+      options:[
+        "Cascading Style Sheets",
+        "Creative Style System",
+        "Computer Style Sheet",
+        "Colorful Style Sheet"
+      ],
+
+      answer:"Cascading Style Sheets"
+    },
+
+    {
+      question:"Which property changes text color?",
+
+      options:[
+        "color",
+        "background",
+        "font-size",
+        "text-style"
+      ],
+
+      answer:"color"
+    },
+
+    {
+      question:"Which property changes background color?",
+
+      options:[
+        "background-color",
+        "bgcolor",
+        "color",
+        "background-image"
+      ],
+
+      answer:"background-color"
+    },
+
+    {
+      question:"Which symbol is used for class selector?",
+
+      options:[
+        ".",
+        "#",
+        "*",
+        "@"
+      ],
+
+      answer:"."
+    }
+
+  ],
+
+  js: [
+
+    {
+      question:"JavaScript is?",
+
+      options:[
+        "Programming Language",
+        "Database",
+        "Server",
+        "Browser"
+      ],
+
+      answer:"Programming Language"
+    },
+
+    {
+      question:"Which keyword declares variable?",
+
+      options:[
+        "let",
+        "int",
+        "string",
+        "define"
+      ],
+
+      answer:"let"
+    },
+
+    {
+      question:"Which symbol is used for comments?",
+
+      options:[
+        "//",
+        "**",
+        "##",
+        "<!-- -->"
+      ],
+
+      answer:"//"
+    },
+
+    {
+      question:"JavaScript file extension is?",
+
+      options:[
+        ".js",
+        ".java",
+        ".javascript",
+        ".jsx"
+      ],
+
+      answer:".js"
+    },
+
+    {
+      question:"Which function prints in console?",
+
+      options:[
+        "console.log()",
+        "print()",
+        "echo()",
+        "write()"
+      ],
+
+      answer:"console.log()"
+    }
+
+  ],
+
+  cpp: [
+
+    {
+      question:"C++ developed by?",
+
+      options:[
+        "Bjarne Stroustrup",
+        "Dennis Ritchie",
+        "James Gosling",
+        "Guido van Rossum"
+      ],
+
+      answer:"Bjarne Stroustrup"
+    },
+
+    {
+      question:"Which symbol ends statement in C++?",
+
+      options:[
+        ";",
+        ":",
+        ".",
+        ","
+      ],
+
+      answer:";"
+    },
+
+    {
+      question:"Which header is used for input/output?",
+
+      options:[
+        "<iostream>",
+        "<stdio>",
+        "<conio>",
+        "<math>"
+      ],
+
+      answer:"<iostream>"
+    },
+
+    {
+      question:"Which keyword is used for class?",
+
+      options:[
+        "class",
+        "Class",
+        "define",
+        "object"
+      ],
+
+      answer:"class"
+    },
+
+    {
+      question:"Which operator is used for output?",
+
+      options:[
+        "<<",
+        ">>",
+        "::",
+        "=="
+      ],
+
+      answer:"<<"
+    }
+
+  ]
+
+};
+let currentQuiz = [];
+let currentQuestion = 0;
+let score = 0;
 let timer;
-function loadQuestion(){
+let timeLeft = 15;
 
-document.getElementById("question").innerHTML=
-quiz[current].question;
+// LOAD QUIZ
 
-for(let i=0;i<4;i++){
-document.getElementById("opt"+i).innerHTML=
-quiz[current].options[i];
-}document.getElementById("progressBar").value=current+1;
+function loadQuiz(subject){
 
-document.querySelectorAll('input[name="answer"]')
-.forEach(r=>r.checked=false);
+  currentQuiz =
+  quizzes[subject];
 
-startTimer();
-}function startTimer(){
+  currentQuestion = 0;
 
-clearInterval(timer);
-time=15;
+  score = 0;
 
-timer=setInterval(function(){
+  document.getElementById(
+  "score").innerText = score;
 
-document.getElementById("timer").innerHTML=
-"Time Left: "+time+" sec";
+  document.getElementById(
+  "quizBox").style.display =
+  "block";
 
-time--;
+  document.getElementById(
+  "subjectTitle").innerText =
+  subject.toUpperCase()
+  + " Quiz";
 
-if(time<0){
-clearInterval(timer);
-nextQuestion();
-}
-
-},1000);
+  showQuestion();
 
 }
+
+// SHOW QUESTION
+
+function showQuestion(){
+
+  clearInterval(timer);
+
+  timeLeft = 15;
+
+  document.getElementById(
+  "time").innerText = timeLeft;
+
+  timer = setInterval(() => {
+
+    timeLeft--;
+
+    document.getElementById(
+    "time").innerText = timeLeft;
+
+    if(timeLeft <= 0){
+
+      clearInterval(timer);
+
+      nextQuestion();
+
+    }
+
+  },1000);
+
+  const q =
+  currentQuiz[currentQuestion];
+
+  document.getElementById(
+  "question").innerText =
+  q.question;
+
+  const optionsDiv =
+  document.getElementById(
+  "options");
+
+  optionsDiv.innerHTML = "";
+
+  q.options.forEach(option => {
+
+    const btn =
+    document.createElement("div");
+
+    btn.classList.add("option");
+
+    btn.innerText = option;
+
+    btn.onclick = () =>
+    checkAnswer(btn, option);
+
+    optionsDiv.appendChild(btn);
+
+  });
+
+  document.getElementById(
+  "quizFeedback").innerText = "";
+
+  updateProgress();
+
+}
+
+// CHECK ANSWER
+
+function checkAnswer(element,
+selected){
+
+  clearInterval(timer);
+
+  const correct =
+  currentQuiz[currentQuestion]
+  .answer;
+
+  if(selected === correct){
+
+    element.classList.add(
+    "correct");
+
+    document.getElementById(
+    "quizFeedback").innerText =
+    "✅ Correct Answer";
+
+    score++;
+
+    document.getElementById(
+    "score").innerText = score;
+
+  }
+
+  else{
+
+    element.classList.add(
+    "wrong");
+
+    document.getElementById(
+    "quizFeedback").innerText =
+    "❌ Wrong Answer";
+
+  }
+
+}
+
+// NEXT QUESTION
+
 function nextQuestion(){
 
-clearInterval(timer);
+  currentQuestion++;
 
-let selected=document.querySelector(
-'input[name="answer"]:checked'
-);
+  if(currentQuestion <
+  currentQuiz.length){
 
-if(selected && 
-parseInt(selected.value)===quiz[current].answer){
-score++;
+    showQuestion();
+
+  }
+
+  else{
+
+    document.getElementById(
+    "quizBox").innerHTML =
+
+    `
+    <h2>
+      Quiz Completed 🎉
+    </h2>
+
+    <h3>
+      Final Score : ${score}
+    </h3>
+    `;
+
+  }
+
 }
 
-current++;
-if(current<quiz.length){
-loadQuestion();
-}
-else{
-document.querySelector(".quiz-box").innerHTML=
-"<h1>Quiz Completed</h1>"+
-"<h2>Your Score: "+score+"/"+quiz.length+"</h2>";
-}
+// UPDATE PROGRESS
+
+function updateProgress(){
+
+  const progress =
+  ((currentQuestion + 1)
+  / currentQuiz.length)
+  * 100;
+
+  document.getElementById(
+  "progressBar").style.width =
+  progress + "%";
 
 }
 
-loadQuestion();
+// FEEDBACK FORM
+
+const form =
+document.getElementById(
+"feedbackForm");
+
+form.addEventListener(
+"submit",
+
+function(e){
+
+  e.preventDefault();
+
+  alert(
+  "Feedback Submitted Successfully ✅"
+  );
+
+  form.reset();
+
+});
