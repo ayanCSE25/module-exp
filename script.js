@@ -558,7 +558,7 @@ function(e){
   e.preventDefault();
 
   alert(
-  "Feedback Submitted Successfully ✅"
+  "Feedback Submitted  ✅"
   );
 
   form.reset();
