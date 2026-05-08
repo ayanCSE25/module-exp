@@ -52,7 +52,7 @@ const quizzes = {
       options:[
         "Hyper Text Markup Language",
         "High Text Machine Language",
-        "Hyperlinks Text Mark Language",
+        "Hyper Tool Language",
         "Home Tool Markup Language"
       ],
 
@@ -63,8 +63,8 @@ const quizzes = {
       question:"Which tag is used for paragraph?",
 
       options:[
-        "<h1>",
         "<p>",
+        "<h1>",
         "<div>",
         "<br>"
       ],
@@ -321,6 +321,7 @@ const quizzes = {
   ]
 
 };
+
 let currentQuiz = [];
 let currentQuestion = 0;
 let score = 0;
@@ -412,7 +413,8 @@ function showQuestion(){
   });
 
   document.getElementById(
-  "quizFeedback").innerText = "";
+  "quizFeedback").innerText =
+  "";
 
   updateProgress();
 
@@ -423,11 +425,31 @@ function showQuestion(){
 function checkAnswer(element,
 selected){
 
+  // STOP TIMER
+
   clearInterval(timer);
+
+  // GET ALL OPTIONS
+
+  const allOptions =
+  document.querySelectorAll(".option");
+
+  // DISABLE MULTIPLE CLICKS
+
+  allOptions.forEach(option => {
+
+    option.style.pointerEvents =
+    "none";
+
+  });
+
+  // CORRECT ANSWER
 
   const correct =
   currentQuiz[currentQuestion]
   .answer;
+
+  // IF CORRECT
 
   if(selected === correct){
 
@@ -438,12 +460,16 @@ selected){
     "quizFeedback").innerText =
     "✅ Correct Answer";
 
+    // SCORE +1 ONLY ONE TIME
+
     score++;
 
     document.getElementById(
     "score").innerText = score;
 
   }
+
+  // IF WRONG
 
   else{
 
@@ -453,6 +479,19 @@ selected){
     document.getElementById(
     "quizFeedback").innerText =
     "❌ Wrong Answer";
+
+    // SHOW CORRECT ANSWER
+
+    allOptions.forEach(option => {
+
+      if(option.innerText === correct){
+
+        option.classList.add(
+        "correct");
+
+      }
+
+    });
 
   }
 
